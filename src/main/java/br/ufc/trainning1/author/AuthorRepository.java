@@ -7,8 +7,7 @@ public interface AuthorRepository {
 
     Iterable<Author> findAll();
     void save(Author author);
-    void update(Author author);
-    void delete(Integer id);
+    void delete(Author author);
     Author findOne(Integer id);
 
 }

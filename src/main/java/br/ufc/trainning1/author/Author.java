@@ -1,11 +1,13 @@
 package br.ufc.trainning1.author;
 
 /**
- * Created by Mauricio Oliveira on 17/07/2017.
+ * Created by Mauricio Oliveira on 18/07/2017.
  */
 public class Author {
     private Integer id;
+
     private String firstName;
+
     private String lastName;
 
     public Author(){
@@ -42,3 +44,4 @@ public class Author {
         this.lastName = lastName;
     }
 }
+

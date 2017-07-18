@@ -1,11 +1,14 @@
 package br.ufc.trainning1.author;
 
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 
+@Component
 public class InMemoryAuthorRepository implements AuthorRepository{
 
     private static final List<Author> AUTHORS  = new ArrayList<>();
@@ -25,19 +28,8 @@ public class InMemoryAuthorRepository implements AuthorRepository{
         AUTHORS.add(author);
     }
 
-
-    public void update(Author author) {
-        for (Author a : AUTHORS) {
-            if(a.getId()==author.getId()){
-                a.setFirstName(author.getFirstName());
-                a.setLastName(author.getLastName());
-            }
-        }
-    }
-
-
-    public void delete(Integer id) {
-        AUTHORS.remove(id);
+    public void delete(Author author) {
+        AUTHORS.remove(author);
     }
 
 
