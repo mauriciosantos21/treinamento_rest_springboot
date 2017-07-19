@@ -1,9 +1,21 @@
 package br.ufc.trainning1.author;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 /**
  * Created by Mauricio Oliveira on 18/07/2017.
  */
+
+
+@Entity
 public class Author {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String firstName;
