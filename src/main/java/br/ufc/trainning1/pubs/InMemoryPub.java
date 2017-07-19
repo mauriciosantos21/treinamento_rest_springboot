@@ -3,6 +3,7 @@ package br.ufc.trainning1.pubs;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,13 @@ import java.util.List;
 public class InMemoryPub implements PubRepository {
 
     private static  final List<Pub> PUBS = new ArrayList<>();
+
+    static{
+        PUBS.addAll(Arrays.asList(
+                new Pub("Joao de Barro", "Joao", 2),
+                new Pub("Biblia", "Deus", 1)
+        ));
+    }
 
     @Override
     public Iterable<Pub> findAll() {
@@ -32,7 +40,7 @@ public class InMemoryPub implements PubRepository {
     }
 
     @Override
-    public Pub findOnde(Integer id) {
+    public Pub findOne(Integer id) {
         return PUBS.get(id-1);
     }
 }

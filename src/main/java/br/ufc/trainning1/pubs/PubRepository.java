@@ -8,6 +8,6 @@ public interface PubRepository {
     Iterable<Pub> findAll();
     void save(Pub pub);
     void delete(Pub pub);
-    Pub findOnde(Integer id);
+    Pub findOne(Integer id);
 
 }
