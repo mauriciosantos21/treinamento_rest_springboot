@@ -1,10 +1,10 @@
 package br.ufc.trainning1.author;
 
-import org.springframework.data.annotation.Id;
+import br.ufc.trainning1.pubs.Pub;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by Mauricio Oliveira on 18/07/2017.
@@ -22,14 +22,17 @@ public class Author {
 
     private String lastName;
 
+    @OneToMany(mappedBy = "author")
+    private Collection<Pub> pubs;
+
     public Author(){
 
     }
 
-    public Author(Integer id, String firstName, String lastName) {
-        this.id = id;
+    public Author(String firstName, String lastName, Collection<Pub> pubs) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.pubs = pubs;
     }
 
     public Integer getId() {
