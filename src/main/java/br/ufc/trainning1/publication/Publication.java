@@ -1,4 +1,4 @@
-package br.ufc.trainning1.pubs;
+package br.ufc.trainning1.publication;
 
 import br.ufc.trainning1.author.Author;
 import br.ufc.trainning1.publishers.Publisher;
@@ -12,7 +12,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Pub {
+public class Publication {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -22,18 +22,22 @@ public class Pub {
     @ManyToOne
     private Publisher publisher;
 
+    @Enumerated(EnumType.STRING)
+    private PublicationType publicationType;
+
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date pubDate;
 
-    public Pub(){
+    public Publication(){
 
     }
 
-    public Pub(String title, Author author, Publisher publisher, Date pubDate) {
+    public Publication(String title, Author author, Publisher publisher, PublicationType publicationType, Date pubDate) {
         this.title = title;
         this.author = author;
         this.publisher = publisher;
+        this.publicationType = publicationType;
         this.pubDate = pubDate;
     }
 
@@ -67,6 +71,14 @@ public class Pub {
 
     public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
+    }
+
+    public PublicationType getPublicationType() {
+        return publicationType;
+    }
+
+    public void setPublicationType(PublicationType publicationType) {
+        this.publicationType = publicationType;
     }
 
     public Date getPubDate() {

@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.ufc.trainning1.pubs.Pub;
+import br.ufc.trainning1.publication.Publication;
 import org.springframework.data.annotation.CreatedDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -24,23 +24,27 @@ public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-
     private String name;
-
-
+    private String city;
+    private String country;
 
     @OneToMany(mappedBy = "publisher")
     @JsonIgnore
-    private Collection<Pub> pubs;
+    private Collection<Publication> publications;
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    public Publisher(){
 
-    public Publisher(String name, Collection<Pub> pubs, Date createdAt) {
+    }
+
+    public Publisher(String name, String city, String country, Collection<Publication> publications, Date createdAt) {
         this.name = name;
-        this.pubs = pubs;
+        this.city = city;
+        this.country = country;
+        this.publications = publications;
         this.createdAt = createdAt;
     }
 
@@ -60,12 +64,28 @@ public class Publisher {
         this.name = name;
     }
 
-    public Collection<Pub> getPubs() {
-        return pubs;
+    public String getCity() {
+        return city;
     }
 
-    public void setPubs(Collection<Pub> pubs) {
-        this.pubs = pubs;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public Collection<Publication> getPublications() {
+        return publications;
+    }
+
+    public void setPublications(Collection<Publication> publications) {
+        this.publications = publications;
     }
 
     public Date getCreatedAt() {
